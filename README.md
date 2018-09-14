@@ -30,5 +30,5 @@ https://metamask.io/
 
 > The Election.sol smart contract only allows one unique account to vote to prevent multiple votes!
 
-### Video Tutorial:
+### A terrible too long Video Tutorial:
 https://drive.google.com/open?id=1W89ISSUPkjKADE23FmMD21Nb8GHKIZ1g
