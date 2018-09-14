@@ -22,8 +22,12 @@ contract Election {
     );
 
     function Election () public {
-        addCandidate("Candidate 1");
-        addCandidate("Candidate 2");
+        addCandidate("Justin Kook");
+        addCandidate("Joe Man");
+        addCandidate("Min Jung");
+        addCandidate("Bob Fred");
+        addCandidate("Julie An");
+        addCandidate("Sarah Jones");
     }
 
     function addCandidate (string _name) private {
