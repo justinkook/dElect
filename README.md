@@ -12,7 +12,7 @@ _Election.sol Smart contract written in Solidity_
 <br>
 _Testing by Mocha_
 
-# How to use this project:
+## How to use this project:
 #### 1. Clone this repo.
 
 #### 2. In terminal or git bash install truffle packages by typing: 
@@ -22,9 +22,13 @@ _Testing by Mocha_
 https://truffleframework.com/ganache
 <br>
 https://metamask.io/
-#### 3. Test election.js by typing `truffle test` in the root directory folder.
-#### 4. In terminal type: ` truffle migrate --reset `
-#### 5. In terminal type `npm run dev` to run the program on localhost:7574. (Note that PORT: 7574 is default)
+#### 3. Import any account key from Ganche to your MetaMask wallet then connect to a custom RPC localhost:7545. 
+**_(Note that PORT: 7545 is default)_**
+#### 4. Test election.js by typing `truffle test` in the root directory folder.
+#### 5. In terminal type: ` truffle migrate --reset `
+#### 6. In terminal type `npm run dev` to run the program on a local server.
+
+> The Election.sol smart contract only allows one unique account to vote to prevent multiple votes!
 
 ### Video Tutorial:
 https://drive.google.com/open?id=1W89ISSUPkjKADE23FmMD21Nb8GHKIZ1g
