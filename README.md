@@ -11,6 +11,7 @@ Uses Ganche to generate ETH tokens and MetaMask chrome extention as a wallet to 
 #### Future Implementations:
 - Implementing filters for security measures to identify the correct people with permissions to vote. For example, any citizen over age 18.
 - UI / UX design of the app. Cross platform to Web, iOS, and Android.
+- Deploying to Amazon Web Services.
 - Connecting to a distributed blockchain ledger platform [Provide Services] (https://provide.services/) or Ethereum Main.
 - Scraping or manually entering candidate information to inform voters.
 
