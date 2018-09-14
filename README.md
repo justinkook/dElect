@@ -1,5 +1,5 @@
 # dElect
-dApp hosted on Ethereum private network
+A voting dApp hosted on private truffle test network
 
 Vote for a candidate by spending ETH creating a secure transaction history on a blockchain.
 <br>
