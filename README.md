@@ -11,4 +11,4 @@ Election.sol Smart contract written in Solidity
 <br>
 Testing by Mocha
 
-<video href="https://drive.google.com/open?id=1W89ISSUPkjKADE23FmMD21Nb8GHKIZ1g">
+https://drive.google.com/open?id=1W89ISSUPkjKADE23FmMD21Nb8GHKIZ1g
