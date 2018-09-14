@@ -9,9 +9,7 @@ Spending ETH confirms the initiation of the Election.sol smart contract to run w
 Uses Ganche to generate ETH tokens and MetaMask chrome extention as a wallet to spend ETH in order to vote.
 
 _Election.sol Smart contract written in Solidity_
-
 <br>
-
 _Testing by Mocha_
 
 # How to use this project:
