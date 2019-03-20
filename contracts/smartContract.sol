@@ -1,57 +1,54 @@
-pragma solidity ^0.4.2;
-library dmanLibrary {
-struct data {
-    address beneficiary;
-    bytes32 data;
-    bool isValue;
-    uint32 expiration_time;
-}
-}
+pragma solidity ^0.5.1;
 
-contract deadManSwitch {
-    using dmanLibrary for dmanLibrary.data;
-    mapping (address => dmanLibrary.data) Dman_data;
+// Provide DeadmanSwitch TABconf workshop
+contract DeadmanSwitch {
 
+    address public beneficiary; // named beneficiary
+    address public estate; // estate
+    uint public expiration; // block number of the expiration
+    uint public ttl = 100; // time to live (number of blocks)
 
-    function createDmanSwitch ( address beneficiary, bytes32 data, uint32 expiration_time) returns (bool) {
-        if (Dman_data[msg.sender].isValue) throw;
+    // TODO: add ERC20 token balance
 
-        Dman_data[msg.sender].isValue = true;
-        Dman_data[msg.sender].beneficiary = beneficiary;
-        Dman_data[msg.sender].data = data;
-        Dman_data[msg.sender].expiration_time = expiration_time;
+    constructor(address _beneficiary) public {
+        estate = msg.sender;
+        beneficiary = _beneficiary;
+        expiration = block.number + ttl;
     }
 
-    function preventKick (uint32 new_expiration_time) {
-        if (!Dman_data[msg.sender].isValue) throw;
-        Dman_data[msg.sender].expiration_time = new_expiration_time;
+    function checkin() public onlyEstate onlyNotExpired {
+        expiration = block.number + ttl;
     }
 
-    function getTimeLeft() returns (uint32 return_time) {
-        if(!Dman_data[msg.sender].isValue) throw;
-        return Dman_data[msg.sender].expiration_time;
+    function withdraw() public onlyBeneficiary onlyExpired {
+        // TODO: transfer ERC20 balance to beneficiary
     }
 
-    function getExpirationTimeFromAddress( address sender) returns (uint32) {
-        if(!Dman_data[msg.sender].isValue) throw;
-        return Dman_data[sender].expiration_time;
-    }
-    function getExpirationTime() returns (uint32) {
-        if(!Dman_data[sender].isValue) throw;
-        return Dman_data[msg.sender].expiration_time;
+    modifier onlyBeneficiary() {
+        if (msg.sender != beneficiary) {
+            revert("Cannot withdraw unless named beneficary.");
+        }
+        _;
     }
 
-    function isAddressExpired(address sender, uint32 now_time) returns (bool) {
-        if(!Dman_data[sender].isValue) throw;
-        if(now_time == Dman_data[sender].expiration_time) throw;
-        return true;
-        else
-            return false;
+    modifier onlyEstate() {
+        if (msg.sender != estate) {
+            revert("Cannot execute unless estate.");
+        }
+        _;
+    }
+    
+    modifier onlyExpired() {
+        if (block.number < expiration) {
+            revert("Cannot execute prior to expiration.");
+        }
+        _;
     }
 
-    function getDataFromAddress(address sender) returns (bytes32) {
-        if(!Dman_data[sender].isValue) throw;
-        if(msg.sender != Dman_data[sender].beneficiary) throw;
-        return Dman_data[sender].data;
+    modifier onlyNotExpired() {
+        if (block.number >= expiration) {
+            revert("Cannot execute after expiration.");
+        }
+        _;
     }
 }
